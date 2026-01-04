@@ -49,8 +49,13 @@
       100% { background-position: -200% center; }
     }
     .animate-shine {
-      background: #fff;
-          color: #fff;
+          background: linear-gradient(to right, #22d3ee 20%, #fff 40%, #a855f7 60%, #22d3ee 80%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
     }
 
     /* Custom Scrollbar */
@@ -263,8 +268,7 @@
         Featured Works
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-4">
-        <!-- Project 1 -->
+      <div class="flex overflow-x-auto gap-8 pb-4">     <!-- Project 1 -->
         <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 hover:-translate-y-2">
           <div class="h-64 overflow-hidden relative">
                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
