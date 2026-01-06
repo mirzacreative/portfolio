@@ -30,8 +30,7 @@
 
                                                                                                                                                                 <!-- Blog Section -->
                                                                                                                                                                     <url>
-                                                                                                                                                                            <loc>https://mirzacreative.github.io/portfolio/#blog</loc>
-                                                                                                                                                                                    <lastmod>2026-01-06</lastmod>
+                        <loc>https://mirzacreative.github.io/portfolio/blog.html</loc>                                                                                                                                                                                    <lastmod>2026-01-06</lastmod>
                                                                                                                                                                                             <changefreq>weekly</changefreq>
                                                                                                                                                                                                     <priority>0.8</priority>
                                                                                                                                                                                                         </url>
@@ -51,5 +50,6 @@
                                                                                                                                                                                                                                                                                     <changefreq>monthly</changefreq>
                                                                                                                                                                                                                                                                                             <priority>0.7</priority>
                                                                                                                                                                                                                                                                                                 </url>
+
 
                                                                                                                                                                                                                                                                                                 </urlset>
