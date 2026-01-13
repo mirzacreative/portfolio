@@ -66,8 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Auto-slide every 5 seconds
-        setInterval(() => {
+        // Auto-slide every 3 seconds        setInterval(() => {
             const maxIndex = Math.ceil(allReviews.length / reviewsPerPage) - 1;
             if (currentIndex < maxIndex) {
                 currentIndex++;
@@ -75,12 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentIndex = 0;
             }
             updateSlider();
-        }, 5000);
-    }
+        }, 3000);    }
 
     // === MOBILE NAVIGATION FIX ===
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
+}, 3000);    const mobileMenu = document.querySelector('.mobile-menu');
     if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
