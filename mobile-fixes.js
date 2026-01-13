@@ -1,11 +1,10 @@
-// Mobile Fixes - Mirza Creative Portfolio
-// Fixes: Mobile Nav, FAQ Accordion, Review Slider
+// Mobile Fixes - Reviews Slider & FAQ Accordion
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Mobile fixes loaded');
-    
-    // FAQ FIX
-    const faqButtons = document.querySelectorAll('button');
+
+    // === FAQ ACCORDION FIX ===
+    const faqButtons = document.querySelectorAll('#faq button');
     faqButtons.forEach((btn) => {
         const text = btn.textContent.toLowerCase();
         if (text.includes('?') || text.includes('what') || text.includes('how')) {
@@ -21,37 +20,70 @@ document.addEventListener('DOMContentLoaded', function() {
                     const isVisible = answer.style.display !== 'none';
                     answer.style.display = isVisible ? 'none' : 'block';
                     answer.style.maxHeight = isVisible ? '0' : '2000px';
+                    answer.style.padding = isVisible ? '0' : '20px';
                     answer.style.opacity = isVisible ? '0' : '1';
-                    answer.style.transition = 'all 0.3s';
-                    console.log('FAQ toggled');
+                    answer.style.transition = 'all 0.3s ease';
                 }
             });
         }
     });
-    
-    // SLIDER FIX  
-    setTimeout(() => {
-        const btns = document.querySelectorAll('button');
-        let prev = null, next = null;
-        btns.forEach(b => {
-            if (b.innerHTML.includes('<')) prev = b;
-            if (b.innerHTML.includes('>')) next = b;
-        });
+
+    // === REVIEWS SLIDER FIX ===
+    const reviewsSlider = document.querySelector('#reviews-slider');
+    if (reviewsSlider) {
+        let currentIndex = 0;
+        const allReviews = Array.from(reviewsSlider.children);
+        const reviewsPerPage = 3;
         
-        const reviews = document.querySelectorAll('[class*="testimonial"] > *, [class*="review"] > *');
-        let idx = 0;
+        function updateSlider() {
+            const offset = currentIndex * -(100 / reviewsPerPage);
+            reviewsSlider.style.transform = `translateX(${offset}%)`;
+            reviewsSlider.style.transition = 'transform 0.5s ease';
+        }
         
-        function show(i) {
-            reviews.forEach((r, ri) => {
-                r.style.display = ri === i ? 'block' : 'none';
+        // Previous button
+        const prevBtn = document.querySelector('#reviews button:first-of-type');
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
             });
         }
         
-        if (prev) prev.onclick = () => { idx = (idx - 1 + reviews.length) % reviews.length; show(idx); };
-        if (next) next.onclick = () => { idx = (idx + 1) % reviews.length; show(idx); };
+        // Next button
+        const nextBtn = document.querySelector('#reviews button:last-of-type');
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const maxIndex = Math.ceil(allReviews.length / reviewsPerPage) - 1;
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+        }
         
-        if (reviews.length > 0) show(0);
-    }, 1000);
-    
-    console.log('All fixes applied');
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            const maxIndex = Math.ceil(allReviews.length / reviewsPerPage) - 1;
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateSlider();
+        }, 5000);
+    }
+
+    // === MOBILE NAVIGATION FIX ===
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+    }
 });
