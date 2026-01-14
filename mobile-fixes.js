@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Auto-slide every 2 seconds
+        // Auto-slide every 3 seconds
         setInterval(function() {
             const slidesToShow = getSlidesToShow();
             const maxSlide = Math.max(0, totalSlides - slidesToShow);
@@ -138,11 +138,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentSlide = 0;
             }
             updateSlider();
-        }, 2000);
+        }, 3000);
         
         // Initialize
         updateSlider();
-        
+        2000	3000
         // Update on window resize
         window.addEventListener('resize', updateSlider);
     }
