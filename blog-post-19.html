@@ -8,19 +8,34 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-  <a href="index.html" class="logo">Mirza Creative</a>
-  <button class="nav-toggle" aria-label="Toggle navigation">
-    <span></span><span></span><span></span>
-  </button>
-  <nav class="nav-menu">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="blog.html">Blog</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+<!-- Responsive Navigation -->
+<nav id="navbar" class="fixed w-full top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 py-4">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold"><span class="text-cyan-400">MIRZA</span> <span class="text-purple-400">CREATIVE</span></a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#home" class="text-slate-400 hover:text-cyan-400 transition-colors">Home</a>
+                <a href="index.html#services" class="text-slate-400 hover:text-cyan-400 transition-colors">Services</a>
+                <a href="index.html#portfolio" class="text-slate-400 hover:text-cyan-400 transition-colors">Portfolio</a>
+                <a href="blog.html" class="text-cyan-400 font-semibold">Blog</a>
+                <a href="index.html#contact" class="text-slate-400 hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+            <button id="menu-btn" class="md:hidden text-slate-400 hover:text-cyan-400 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-slate-800">
+        <div class="px-6 py-4 space-y-3">
+            <a href="index.html#home" class="block mobile-link text-slate-400 hover:text-cyan-400 py-2">Home</a>
+            <a href="index.html#services" class="block mobile-link text-slate-400 hover:text-cyan-400 py-2">Services</a>
+            <a href="index.html#portfolio" class="block mobile-link text-slate-400 hover:text-cyan-400 py-2">Portfolio</a>
+            <a href="blog.html" class="block mobile-link text-cyan-400 font-semibold py-2">Blog</a>
+            <a href="index.html#contact" class="block mobile-link text-slate-400 hover:text-cyan-400 py-2">Contact</a>
+        </div>
+    </div>
+</nav>
+<div class="h-20"></div>
 
 <main class="blog-post">
   <article>
@@ -78,5 +93,13 @@
 </main>
 
 <script src="main.js"></script>
+  <script>
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+if(menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+}
+</script>
 </body>
 </html>
